@@ -11,7 +11,6 @@ function Cards(props) {
             .catch(console.error)
     }, [])
     
-
     return (
         <div>
             {cards.map(card => {

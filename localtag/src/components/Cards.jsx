@@ -1,20 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from './Card'
 
 function Cards(props) {
-    const cards = 'http://localhost:4000/cards'
-        fetch(cards)
+    const [cards, setCards] = useState([])
+
+    fetch('http://localhost:4000/cards')
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setCards(data))
         .catch(console.error)
     return (
         <div>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+            {cards.map(card => {
+                return <Card card={card}/>
+            })}
         </div>
     );
 }

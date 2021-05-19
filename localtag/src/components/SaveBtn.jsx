@@ -3,7 +3,7 @@ import React from 'react';
 function SaveBtn(props) {
     return (
         <div>
-            <button>Save Button</button>
+            <button>Save</button>
         </div>
     );
 }

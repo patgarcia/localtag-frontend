@@ -4,11 +4,9 @@ import './App.css';
 
 function App() {
   return (
-    <div>
       <DataContext.Provider>
-
+        <h1>LocalTag Frontend</h1>
       </DataContext.Provider>
-    </div>
   );
 }
 

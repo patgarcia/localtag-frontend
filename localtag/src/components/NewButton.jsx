@@ -3,7 +3,7 @@ import React from 'react';
 function NewButton(props) {
     return (
         <div>
-            NewButton
+            "NewButton links to new-image page"
         </div>
     );
 }

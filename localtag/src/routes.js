@@ -7,6 +7,7 @@ export const Routes = () => {
     return (
         <div>
             <Switch>
+                <Route  path="/" component={Main} />
                 <Route exact path="/cards" component={Cards} />
             </Switch>
         </div>

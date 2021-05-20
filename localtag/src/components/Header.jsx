@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <AppBar position ="static">
       <Toolbar>
-        <Typography className={mergeClasses.typographyStyles}>
+        <Typography className={classes.typographyStyles}>
           Local Tag
         </Typography>
         <Avatar aria-label="Avatar" />

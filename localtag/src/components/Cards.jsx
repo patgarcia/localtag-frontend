@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Card from './Card'
+import { Grid } from '@material-ui/core';
 
 function Cards(props) {
     const [cards, setCards] = useState([])
@@ -12,11 +13,13 @@ function Cards(props) {
     }, [])
     
     return (
-        <div>
+        <Grid container spacing ={2}>
             {cards.map(card => {
                 return <Card card={card}/>
             })}
-        </div>
+            <Grid item xs={false} sma={2} />
+            <Grid item xs={12} sm={8} />
+        </Grid>
     );
 }
 

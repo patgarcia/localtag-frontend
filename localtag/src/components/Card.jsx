@@ -20,6 +20,8 @@ function Card({card}) {
         <span>
             <h4>{location.city}, {location.state}</h4>
             <img src={image["thumbnail_url"]}></img> 
+            {/* Link to /collection/:id  */}
+            
         </span>
     );
 }

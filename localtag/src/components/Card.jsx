@@ -5,7 +5,7 @@ import { DataContext } from './DataContext'
 function Card({data}) {
     const {view, setView} = useContext(DataContext)
     const {id, setId} = useContext(DataContext)
-    const link = `image/${data.image._id}`;
+    const link = `/image/${data.image._id}`;
     return (
         <span>
             <h1>{data._id}</h1>

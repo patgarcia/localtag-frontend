@@ -2,14 +2,31 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
 import NewButton from "./NewButton";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { mergeClasses, creatStyles, makeStyles} from "@material-ui/styles";
+import Avatar from '@material-ui/core/Avatar';
 
-function Header(props) {
+
+const useStyles = makeStyles(() => ({
+  typographyStyles: {
+    flex: 1
+  }
+}))
+
+const Header = () => {
+  const classes = useStyles();
   return (
-    <div>
-      <h1>Local Tag</h1>
-      <SearchBar />
+    <AppBar position ="static">
+      <Toolbar>
+        <Typography className={mergeClasses.typographyStyles}>
+          Local Tag
+        </Typography>
+        <Avatar aria-label="Avatar" />
+     <SearchBar />
       <Logo />
-    </div>
+      </Toolbar>
+    </AppBar>
+    
   );
 }
 

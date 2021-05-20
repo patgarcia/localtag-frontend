@@ -1,10 +1,11 @@
 import React from 'react';
-
-function Logo(props) {
+import AddLocationIcon from '@material-ui/icons/AddLocation';
+import { Grid } from '@material-ui/core';
+const Logo = () => {
     return (
-        <div>
-            Logo
-        </div>
+        <Grid>
+            <AddLocationIcon />
+        </Grid>
     );
 }
 

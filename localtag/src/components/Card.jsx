@@ -1,25 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
+import { Link } from 'react-router-dom'
+import { DataContext } from './DataContext'
 
 function Card({card}) {
-    const [image, setImage] = useState('[]')
-    const [location, setLocation] = useState('[]')
-
-    useEffect(() => {
-        fetch('http://localhost:4000/images/' + card.image)
-            .then(res => res.json())
-            .then(data => setImage(data))
-            .catch(console.error)
-        fetch('http://localhost:4000/locations/' + card.location)
-            .then(res => res.json())
-            .then(data => setLocation(data))
-            .catch(console.error)
-    },[])
-    
-        
+    const {view, setView} = useContext(DataContext)
+    const {id, setId} = useContext(DataContext)
     return (
         <span>
-            <h4>{location.city}, {location.state}</h4>
-            <img src={image["thumbnail_url"]}></img> 
+            <h4>{card.location.city}, {card.location.state}</h4>
+            <Link to={"/collection/" + card.collection_id} onClick={() => {
+                setView('one')
+                setId(card.collection_id)
+            }}>
+              <img src={card.image["thumbnail_url"]}></img>  
+            </Link>
+            
+            <p>Votes: {card.vote_tally}</p> 
         </span>
     );
 }

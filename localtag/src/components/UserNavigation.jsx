@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { TextField } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 
 function UserNavigation(props) {
   const apiURL = process.env.REACT_APP_API_URL;
@@ -44,8 +46,8 @@ function UserNavigation(props) {
       { errMessage && <p style={{color:'red'}}>{errMessage}</p> }
       {!showNav ? (
         <form onSubmit={handleLogin}>
-          <input name="email" type="text" placeholder="email" />
-          <input name="password" type="password" placeholder="password" />
+          <TextField name="email" type="text" label="email"/>
+          <TextField name="password" type="password" label="password"/>
           <button>Login</button>
         </form>
       ) : (
@@ -56,7 +58,7 @@ function UserNavigation(props) {
               <button>Change Password</button>
             </li>
             <li>
-              <button onClick={handleLogout}>Logout</button>
+              <Button variant="contained" color="primary" onClick={handleLogout}>Logout</Button>
             </li>
           </ul>
         </nav>

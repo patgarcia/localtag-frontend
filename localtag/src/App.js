@@ -5,10 +5,9 @@ import Main from './components/Main'
 import './App.css';
 
 function App() {
-  const [view, setView] = useState('all')
-  const [id, setId] = useState('')
+  const [search, setSearch] = useState('')
   return (
-      <DataContext.Provider value={{view, setView, id, setId}}>
+      <DataContext.Provider value={{search, setSearch}}>
         <Header/>
         <Main/>
       </DataContext.Provider>

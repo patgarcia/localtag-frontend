@@ -2,8 +2,9 @@ import React, {useContext} from 'react';
 import { Link } from 'react-router-dom'
 import { DataContext } from './DataContext'
 
-///Material UI Imports
+// Material UI Imports
 import { makeStyles } from '@material-ui/core/styles';
+import {Grid} from '@material-ui/core'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -31,35 +32,33 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-
-
-function CollectionCard({data}) {
+function CardSolo({data}) {
     const {view, setView} = useContext(DataContext)
     const {id, setId} = useContext(DataContext)
-    const link = (data.tag.name ? `collections/${data._id}` : `image/${data.image._id}`) 
+    const link = `/image/${data.image._id}`;
     return (
-    <Card>
-      <CardHeader
+     <Card container justify='center'>
+      <CardHeader 
         action={
           <IconButton aria-label="settings">
           </IconButton>
-        }
+            }
         title={data.name}
-      />
-      <Link to={`/collections/${data._id}`}>
-        <CardMedia style = {{ height: "150px" }} image={data.image.hq_image_url} />
-      </Link>
+        />
+    <Link to={link}>
+        <Grid item xs={12} sm={4}>
+      <CardMedia style = {{ height: "500px" }} image={data.image.hq_image_url} />
+      </Grid>
+        </Link>
       <CardContent>
-        <Typography variant="body2" color="textPrimary" component="p">
-         {data.location.city}, {data.location.state}
+        <Typography variant="body1" color="textPrimary" component="p">
+        {data.location.city}, {data.location.state}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-         #{data.tag.name}
         </Typography>
       </CardContent>
     </Card>
     );
 }
 
-export default CollectionCard;
-
+export default CardSolo

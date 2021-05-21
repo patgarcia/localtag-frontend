@@ -1,15 +1,16 @@
 import React, {useState, useContext, useEffect} from 'react';
 import CollectionCards from './CollectionCards'
 
+// Material UI imports
+import { Grid } from "@material-ui/core";
+
+
 function Collections(props) {
     const [data, setData] = useState(null)
 
-    //Home - Collection Cards 
-    //Results - Collection Cards - /querystring    
-    //Detail List/Map - Cards of a Collection - collection/:id
-    //User - Collection Cards
-
     const apiURL =  process.env.REACT_APP_API_URL;
+
+    // UX Logic Here
 
     useEffect(() => {
         fetch(`${apiURL}/collections?detail=true`)
@@ -26,4 +27,3 @@ function Collections(props) {
 
 
 export default Collections;
- 

@@ -4,8 +4,10 @@ import Card from './Card'
 function Cards({collec}) {
     const [cards, setCards] = useState(null);
 
+    const apiURL =  process.env.REACT_APP_API_URL;
+
     useEffect(() => {
-        fetch(`http://localhost:4000/cards/collection/${collec._id}?detail=true`)
+        fetch(`${apiURL}/cards/collection/${collec._id}?detail=true`)
         .then(res => res.json())
         .then(res => setCards(res))
         

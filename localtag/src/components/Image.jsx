@@ -6,8 +6,10 @@ function Image({match}) {
 
     const [image, setImage] = useState(null)
 
+    const apiURL =  process.env.REACT_APP_API_URL;
+
     useEffect(() => {
-        fetch(`http://localhost:4000/images/${match.params.id}`)
+        fetch(`${apiURL}/images/${match.params.id}`)
         .then(data => data.json())
         .then(jsonData => setImage(jsonData))
     }, [])

@@ -9,8 +9,10 @@ function Collections(props) {
     //Detail List/Map - Cards of a Collection - collection/:id
     //User - Collection Cards
 
+    const apiURL =  process.env.REACT_APP_API_URL;
+
     useEffect(() => {
-        fetch(`http://localhost:4000/collections?detail=true`)
+        fetch(`${apiURL}/collections?detail=true`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [])

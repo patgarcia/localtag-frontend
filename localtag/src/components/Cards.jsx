@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import Card from './Card'
+import CardSolo from './CardSolo'
 
 function Cards({collec}) {
     const [cards, setCards] = useState(null);
@@ -18,11 +18,9 @@ function Cards({collec}) {
             <h1>{ collec.name }</h1>
             {cards ? 
             (cards.map(card => {
-                return <Card data={card} key={card._id}/>
+                return <CardSolo data={card} key={card._id}/>
             }))
             : "No data"}
-
-            <h2>CARD IMAGES</h2>
         </div>
     );
 }

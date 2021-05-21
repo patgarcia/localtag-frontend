@@ -1,20 +1,26 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { DataContext } from './DataContext';
 import CollectionCard from './CollectionCard'
 
-function CollectionCards({data}) {
+//Material UI Imports
+import { Grid } from "@material-ui/core";
 
+
+function CollectionCards({data}) {
+    const {search, setSearch} = useContext(DataContext)
     return (
-        <div>
+        <Grid container spacing={2}>
             {data ? 
-            (data.map(coll => {
-                return <CollectionCard data={coll} key={coll._id}/>
+            (data.filter(coll => coll.tag.name.includes(search)).map(coll => {
+                return (
+                    <Grid item xs={12} sm={4}>
+                        <CollectionCard data={coll} key={coll._id}/>
+                    </Grid>
+                )
             }))
             : "No data"}
-
-            <h2>CARD IMAGES</h2>
-        </div>
+        </Grid>
     );
 }
 
 export default CollectionCards;
-       

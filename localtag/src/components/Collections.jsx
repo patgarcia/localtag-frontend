@@ -3,12 +3,6 @@ import CollectionCards from './CollectionCards'
 
 function Collections(props) {
     const [data, setData] = useState(null)
-
-    //Home - Collection Cards 
-    //Results - Collection Cards - /querystring    
-    //Detail List/Map - Cards of a Collection - collection/:id
-    //User - Collection Cards
-
     const apiURL =  process.env.REACT_APP_API_URL;
 
     useEffect(() => {

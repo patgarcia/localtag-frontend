@@ -44,10 +44,7 @@ function EditForm(props) {
 
     return (
         <div>
-            <UserNavigation />
-
-            <p>{ postURL ? postURL : 'no url' }</p>
-            <button>Outside of form</button>
+            {/* <p>{ postURL ? postURL : 'no url' }</p> */}
             <form onSubmit={handlePost}>
                 <input type='text' name="name"></input>
                 <button>Create { postURL ? postURL.slice(1) : 'no url' }</button>

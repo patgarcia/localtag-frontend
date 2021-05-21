@@ -14,6 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import AddLocationIcon from '@material-ui/icons/AddLocation';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -130,22 +131,22 @@ const SearchBar = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
+      {/* <MenuItem>
+        <IconButton aria-label="show 0 new mails" color="inherit">
+          <Badge badgeContent={0} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+        <IconButton aria-label="show 0 new notifications" color="inherit">
+          <Badge badgeContent={0} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -170,10 +171,11 @@ const SearchBar = () => {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
           </IconButton>
+          <AddLocationIcon />
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Local Tag
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -190,16 +192,16 @@ const SearchBar = () => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+            {/* <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={0} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               edge="end"
               aria-label="account of current user"

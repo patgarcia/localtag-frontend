@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
-// import Logo from "./Logo";
+import Logo from "./Logo";
 import NewButton from "./NewButton";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { mergeClasses, creatStyles, makeStyles} from "@material-ui/styles";
@@ -27,7 +27,7 @@ const Header = () => {
     // </AppBar>
     <Grid>
     <SearchBar />
-    {/* <Logo /> */}
+    <Logo />
     </Grid>
   );
 }

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 function Image({match}) {
 
-    console.log(match.params.id)
-
     const [image, setImage] = useState(null)
 
     const apiURL =  process.env.REACT_APP_API_URL;

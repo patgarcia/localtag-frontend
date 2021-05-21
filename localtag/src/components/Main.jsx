@@ -6,6 +6,7 @@ import Collections from './Collections'
 import { Route, Switch } from 'react-router-dom' 
 import DetailViewSwitch from './DetailViewSwitch';
 import Image from './Image'
+import EditForm from './EditForm'
 
 function Main(props) {
     const [map, setMap] = useState(true)
@@ -30,6 +31,7 @@ function Main(props) {
         )
 
         }
+        <EditForm />
         </div>
         
     );

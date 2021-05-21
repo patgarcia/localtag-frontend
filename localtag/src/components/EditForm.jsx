@@ -8,11 +8,20 @@ function EditForm(props) {
 
     const [postURL, setPostURL] = useState(null)
 
+    // ERAS
+    useEffect(() => {
+      fetch(`${apiURL}`)
+        // .then(res => res.json())
+        .then(res => res)
+        .then(res => console.log('THIS IS THE CONSOLE',res))
+    }, [])
+
     const location = useLocation();
     useEffect(() => {
-        setPostURL('/'+location.pathname.slice(1).split('/').shift());
+        setPostURL('/'+(location.pathname.slice(1).split('/').shift() || 'collections'));
     }, [location])
 
+    useEffect
 
     function handlePost(ev) {
         ev.preventDefault();
@@ -24,11 +33,13 @@ function EditForm(props) {
           body: JSON.stringify(formData),
           headers: { "Content-Type": "application/json" },
         })
-          .then((res) => res.status)
-          .then((status) => {
-              console.log(status);
-              return status
-            })
+          // .then((res) => res.json())
+          .then(res => console.log(res))
+          .catch(console.error)
+        //   .then((status) => {
+        //       console.log(status);
+        //       return status
+        //     })
       }
 
     return (
@@ -38,8 +49,8 @@ function EditForm(props) {
             <p>{ postURL ? postURL : 'no url' }</p>
             <button>Outside of form</button>
             <form onSubmit={handlePost}>
-                <input type='text'></input>
-                <button>Edit</button>
+                <input type='text' name="name"></input>
+                <button>Create { postURL ? postURL.slice(1) : 'no url' }</button>
             </form>
         </div>
     );

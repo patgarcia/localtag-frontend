@@ -6,10 +6,13 @@ function UserNavigation(props) {
   const [showNav, setShowNav] = useState(null);
   const [errMessage, setErrMessage] = useState(null);
 
-  // query the session
-  // get response from server
-  // from response, determine if user is logged in
-  // if user exists, setShowNav(true)
+  // Check if user is looged in already at load
+  // useEffect(() => {
+  //   fetch(`${apiURL}/auth/isloggedin`)
+  //   .then((res) => res.status)
+  //   .then((status) => setShowNav(status == 200)
+  //   )
+  // }, [])
 
   function handleLogin(ev) {
     ev.preventDefault();

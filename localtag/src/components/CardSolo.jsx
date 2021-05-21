@@ -38,16 +38,10 @@ function CardSolo({data}) {
     const link = `/image/${data.image._id}`;
     return (
      <Card container justify='center'>
-      <CardHeader 
-        action={
-          <IconButton aria-label="settings">
-          </IconButton>
-            }
-        title={data.name}
-        />
-    <Link to={link}>
-        <Grid item xs={12} sm={4}>
-      <CardMedia style = {{ height: "500px" }} image={data.image.hq_image_url} />
+      <CardHeader title={data.name} />
+      <Link to={link}>
+        <Grid>
+      <CardMedia style = {{ height: "300px" }} image={data.image.hq_image_url} />
       </Grid>
         </Link>
       <CardContent>

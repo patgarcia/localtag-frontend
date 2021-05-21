@@ -1,23 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Card from './Card'
 
-function Cards(props) {
-    const [cards, setCards] = useState([])
+function Cards({collec}) {
+    const [cards, setCards] = useState(null);
+
+    const apiURL =  process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        fetch('http://localhost:4000/cards')
-            .then(res => res.json())
-            .then(data => setCards(data))
-            .catch(console.error)
+        fetch(`${apiURL}/cards/collection/${collec._id}?detail=true`)
+        .then(res => res.json())
+        .then(res => setCards(res))
+        
     }, [])
-    
+
     return (
         <div>
-            {cards.map(card => {
-                return <Card card={card}/>
-            })}
+            <h1>{ collec.name }</h1>
+            {cards ? 
+            (cards.map(card => {
+                return <Card data={card} key={card._id}/>
+            }))
+            : "No data"}
+
+            <h2>CARD IMAGES</h2>
         </div>
     );
 }
 
 export default Cards;
+       

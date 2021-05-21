@@ -1,12 +1,11 @@
 import React from 'react';
-import Cards from './Cards'
 
-function Viewport(props) {
+const Viewport = () => {
     return (
         <div>
-            <Cards/>
+            
         </div>
     );
-}
+};
 
 export default Viewport;

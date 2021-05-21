@@ -2,14 +2,14 @@ import React, {useContext} from 'react';
 import { Link } from 'react-router-dom'
 import { DataContext } from './DataContext'
 
-function Card({data}) {
+function CollectionCard({data}) {
     const {view, setView} = useContext(DataContext)
     const {id, setId} = useContext(DataContext)
-    const link = `/image/${data.image._id}`;
+    const link = (data.tag.name ? `collections/${data._id}` : `image/${data.image._id}`) 
     return (
         <span>
-            <h1>{data._id}</h1>
             <h2>{data.name}</h2>
+            <p>#{data.tag.name}</p>
             <h4>{data.location.city}, {data.location.state}</h4>
             <img src={data.image.thumbnail_url} />
             <Link to={link}>{link}</Link>
@@ -17,4 +17,5 @@ function Card({data}) {
     );
 }
 
-export default Card;
+export default CollectionCard;
+

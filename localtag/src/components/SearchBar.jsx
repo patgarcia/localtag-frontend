@@ -80,7 +80,7 @@ const SearchBar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const {search, setSearch} = useContext(DataContext)
+  const {search, setSearch, open, setOpen} = useContext(DataContext)
 
 
   const isMenuOpen = Boolean(anchorEl);
@@ -105,6 +105,14 @@ const SearchBar = () => {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
   };
 
   const menuId = 'primary-search-account-menu';
@@ -184,7 +192,7 @@ const SearchBar = () => {
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              onClick={handleDrawerOpen}
               color="inherit"
             >
               <AccountCircle />
@@ -195,7 +203,7 @@ const SearchBar = () => {
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              onClick={handleDrawerOpen}
               color="inherit"
             >
               <MoreIcon />

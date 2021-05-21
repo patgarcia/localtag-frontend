@@ -7,15 +7,9 @@ function Card({card}) {
     const {id, setId} = useContext(DataContext)
     return (
         <span>
+            <h2>{card.name}</h2>
+            <p>#{card.tag.name}</p>
             <h4>{card.location.city}, {card.location.state}</h4>
-            <Link to={"/collection/" + card.collection_id} onClick={() => {
-                setView('one')
-                setId(card.collection_id)
-            }}>
-              <img src={card.image["thumbnail_url"]}></img>  
-            </Link>
-            
-            <p>Votes: {card.vote_tally}</p> 
         </span>
     );
 }

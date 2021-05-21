@@ -1,40 +1,29 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Cards from './Cards'
 import NewButton from './NewButton'
 import {DataContext} from './DataContext'
 import Collection from './Collection';
 
-function Viewport({match}) {
+function Viewport({match, apiPath}) {
     const {view, setId} = useContext(DataContext)
-    return(
+    const [data, setData] = useState(null)
+
+    //Home - Collection Cards 
+    //Results - Collection Cards - /querystring    
+    //Detail List/Map - Cards of a Collection - collection/:id
+    //User - Collection Cards
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/${apiPath}`)
+            .then(res => res.json())
+            .then(data => setData(data))
+    }, [])
+
+    return(      
             <div>
-                <Cards/>
-                { view == 'all' ? <NewButton/> : <Collection id={match.params.id}/> }
+                {data ? <Cards data={data}/>: "Loading..."}
             </div>        
     )
-    // if(view === 'all'){
-    //     return (
-    //         <div>
-    //             <Cards/>
-    //             <NewButton/>
-    //         </div>
-    //     ); 
-    // }
-    // else if(view === 'one'){
-    //     return (
-    //         <div>
-                // <Collection id={match.params.id}/>
-    //             <NewButton/>
-    //         </div>
-    //     );
-    // }
-    // else{
-    // return (
-    //     <div>
-    //         <Cards/>
-    //         <NewButton/>
-    //     </div>
-    // );
     }
 
 

@@ -1,21 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from './DataContext';
+import Card from './Card'
 
 
-function Collection({id}) {
-    const [coll, setColl] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:4000/collections?detail=true')
-            .then(res => res.json())
-            .then(res => console.log(res))
-            .then(data => setColl(data))
-            .catch(console.error)
-    }, [])
+function Collection({data}) {
 
     return (
         <div>
-            <h1>One Collection</h1>
+            {data ? 
+            (data.map(coll => {
+                <Card/>
+            }))
+            : "No data"}
         </div>
     );
 }

@@ -1,20 +1,15 @@
 import React, {useState, useEffect, useContext} from 'react';
 import Card from './Card'
 
-function Cards(props) {
-    const [cards, setCards] = useState([])
+function Cards({data}) {
 
-    useEffect(() => {
-        fetch('http://localhost:4000/cards?detail=true')
-            .then(res => res.json())
-            .then(data => setCards(data))
-            .catch(console.error)
-    }, [])
     return (
         <div>
-            {cards.map(card => {
-                return <Card card={card} key={card._id}/>
-            })}
+            {data ? 
+            (data.map(coll => {
+                return <Card card={coll} key={coll._id}/>
+            }))
+            : "No data"}
         </div>
     );
 }

@@ -4,6 +4,7 @@ function UserNavigation(props) {
   const apiURL = process.env.REACT_APP_API_URL;
 
   const [showNav, setShowNav] = useState(null);
+  const [errMessage, setErrMessage] = useState(null);
 
   // query the session
   // get response from server
@@ -12,6 +13,7 @@ function UserNavigation(props) {
 
   function handleLogin(ev) {
     ev.preventDefault();
+    setErrMessage(null);
     const data = new FormData(ev.target);
     const loginData = Object.fromEntries(data.entries());
     console.log(JSON.stringify(loginData));
@@ -22,10 +24,10 @@ function UserNavigation(props) {
     })
       .then((res) => res.status)
       .then((status) => {
+          if(status == 200) setShowNav(true)
+          else setErrMessage('Wrong User / Password combination')
           console.log(status);
-          return status
         })
-      .then(status => setShowNav(status == 200))
   }
 
   function handleLogout(ev) {
@@ -36,10 +38,11 @@ function UserNavigation(props) {
 
   return (
     <div>
+      { errMessage && <p style={{color:'red'}}>{errMessage}</p> }
       {!showNav ? (
         <form onSubmit={handleLogin}>
           <input name="email" type="text" placeholder="email" />
-          <input name="password" type="text" placeholder="password" />
+          <input name="password" type="password" placeholder="password" />
           <button>Login</button>
         </form>
       ) : (

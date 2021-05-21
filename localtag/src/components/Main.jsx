@@ -11,10 +11,6 @@ import EditForm from './EditForm'
 function Main(props) {
     const [map, setMap] = useState(true)
  
-    //Home - Collection Cards 
-    //Results - Collection Cards - /querystring    
-    //Detail List/Map - Cards of a Collection - collection/:id
-    //User - Collection Cards
     return (
         <div>
         <DetailViewSwitch setMap={setMap}/>

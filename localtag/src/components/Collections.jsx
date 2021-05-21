@@ -1,9 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
-import Cards from './Cards'
-import NewButton from './NewButton'
-import {DataContext} from './DataContext'
+import CollectionCards from './CollectionCards'
 
-function Collection({match, apiPath}) {
+function Collections(props) {
     const [data, setData] = useState(null)
 
     //Home - Collection Cards 
@@ -12,18 +10,18 @@ function Collection({match, apiPath}) {
     //User - Collection Cards
 
     useEffect(() => {
-        fetch(`http://localhost:4000/collections/${match ? match.params.id : ''}?detail=true`)
+        fetch(`http://localhost:4000/collections?detail=true`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
 
     return(      
             <div>
-                {data ? <Cards collec={data}/>: "Loading..."}
+                {data ? <CollectionCards data={data}/>: "Loading..."}
             </div>        
     )
     }
 
 
-export default Collection;
+export default Collections;
  

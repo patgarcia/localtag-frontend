@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import Collection from './Collection'
 import Viewport from './Viewport'
 import LocalMap from './LocalMap'
+import Collections from './Collections'
 import { Route, Switch } from 'react-router-dom' 
 import DetailViewSwitch from './DetailViewSwitch';
 
@@ -18,7 +20,11 @@ function Main(props) {
                 
         map ? <LocalMap/> : 
         (
-            <Route exact path="/" render={routerProps => <Viewport apiPath={"collections?detail=true"}/>}/>
+            <div>
+                <Route exact path="/" component={Collections}/>
+                <Route exact path="/collections/:id" render={routerProps => <Collection apiPath={"collections/"} match={routerProps.match}/>}/>
+            </div>
+
         )
 
         }

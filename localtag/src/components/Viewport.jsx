@@ -5,7 +5,7 @@ import {DataContext} from './DataContext'
 import Collection from './Collection';
 
 function Viewport({match, apiPath}) {
-    const {view, setId} = useContext(DataContext)
+    console.log(`http://localhost:4000/${apiPath}${match ? match.params.id : ''}`)
     const [data, setData] = useState(null)
 
     //Home - Collection Cards 
@@ -14,9 +14,10 @@ function Viewport({match, apiPath}) {
     //User - Collection Cards
 
     useEffect(() => {
-        fetch(`http://localhost:4000/${apiPath}`)
+        console.log("FETCHING", `http://localhost:4000/${apiPath}${match ? match.params.id : ''}?detail=true`)
+        fetch(`http://localhost:4000/${apiPath}${match ? match.params.id : ''}?detail=true`)
             .then(res => res.json())
-            .then(data => setData(data))
+            .then(data => setData([].concat(data)))
     }, [])
 
     return(      
